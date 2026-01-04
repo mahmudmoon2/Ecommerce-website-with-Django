@@ -18,6 +18,8 @@ def user_signup(request):
             send_verification_email(request, user)
             messages.info(request, "We have sent you an verification email")
             return redirect ('login')
+        else:
+            return redirect('signup')
         
     else:
             return render(request, 'accounts/signup.html')
@@ -62,7 +64,7 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect("signup")
+    return redirect("login")
 
 
 def reset_password(request):

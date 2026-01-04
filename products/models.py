@@ -19,6 +19,9 @@ class Category(TimeStampedModel):
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
         
+    def __str__(self):
+        return f"Category name : {self.name}"
+        
 class Product (TimeStampedModel):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255 , unique= True, blank=True)
