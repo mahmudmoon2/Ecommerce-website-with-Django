@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% comment %} {% load custom_filters %} {% endcomment %}
 {% block title %}{{product.name}} Details {% endblock %}
 {% block content %}
 
@@ -163,8 +162,8 @@
                                         </button>
                                     </div>
                                 </div>
-                                <a href="#" class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</a>
-                                <a href="#" class="btn btn-md bg-dark cart-button text-white w-100">Remove From Cart</a>
+                                <a href="{% url 'add_cart' product.slug %}" class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</a>
+                                <a href="{% url 'remove_cart' product.slug %}" class="btn btn-md bg-dark cart-button text-white w-100">Remove From Cart</a>
                             </div>
 
                             <div class="progress-sec">
@@ -318,7 +317,8 @@
                                                                     <div class="rating-product">
                                                                         <h5>{{ rating }}<i data-feather="star"></i></h5>
                                                                         <div class="progress">
-                                                                            <div class="progress-bar">
+                                                                            <div class="progress-bar"
+                                                                                style="width:">
                                                                             </div>
                                                                         </div>
                                                                         <h5 class="total">{{
@@ -1424,7 +1424,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST" class="product-review-form">
+                <form action="{% url 'submit_review' product.slug %}" method="POST" class="product-review-form">
                     {% csrf_token %}
                     <div class="product-wrapper">
                         <div class="product-image">
