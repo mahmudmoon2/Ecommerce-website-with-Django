@@ -41,6 +41,10 @@ class Product (TimeStampedModel):
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
         
+    
+    def __str__(self):
+        return f"Product name : {self.name}"
+        
 class ProductImage (models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE , related_name='images')
     image = models.ImageField(upload_to = 'products/images')
