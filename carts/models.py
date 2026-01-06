@@ -5,9 +5,7 @@ from products.models import Product, TimeStampedModel
 
 
 class Cart(TimeStampedModel):
-    user = models.ForeignKey(
-        CustomUser, null=True, related_name="carts", on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(CustomUser, null=True, related_name="carts", on_delete=models.CASCADE)
     session_key = models.CharField(max_length=255)
 
 
